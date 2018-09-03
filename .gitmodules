@@ -1,0 +1,18 @@
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
+	url = git@github.com:mileszs/ack.vim.git
+[submodule ".vim/bundle/comments.vim"]
+	path = .vim/bundle/comments.vim
+	url = git@github.com:sudar/comments.vim.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = git@github.com:ervandew/supertab.git
+[submodule ".vim/bundle/typescript-vim"]
+	path = .vim/bundle/typescript-vim
+	url = git@github.com:leafgarland/typescript-vim.git
+[submodule ".vim/bundle/vim-gitgutter"]
+	path = .vim/bundle/vim-gitgutter
+	url = git@github.com:airblade/vim-gitgutter.git
+[submodule ".vim/bundle/vim-go"]
+	path = .vim/bundle/vim-go
+	url = git@github.com:fatih/vim-go.git
