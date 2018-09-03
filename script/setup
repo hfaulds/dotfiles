@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e
+
+if [ ! -f "/usr/local/bin/brew" ]; then
+  /usr/bin/ruby ./script/homebrew
+fi
+
+/usr/local/bin/brew bundle
+
+git submodule init
+git submodule update
+
+pwd=$(pwd)
+
+for f in $(find . -iname ".*" -d 1) ; do
+  ff=$(basename $f)
+  if [[ "$ff" != "." &&
+    "$ff" != ".." &&
+    "$ff" != ".git" &&
+    "$ff" != ".gitmodule" ]]; then
+    echo "link $pwd/$ff"
+		if [[ -f ~/$ff ]]; then
+			rm ~/$ff
+		fi
+		if [[ -d ~/$ff ]]; then
+			rm -r ~/$ff
+		fi
+    ln -s "$pwd/$ff" ~
+  fi
+done
