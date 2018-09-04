@@ -183,3 +183,12 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
 let g:syntastic_go_checkers = ['golint', 'govet']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'relativepath', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'fileformat' ] ]
+      \ },
+      \ }
