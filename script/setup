@@ -13,19 +13,8 @@ git submodule update
 
 pwd=$(pwd)
 
-for f in $(find . -iname ".*" -d 1) ; do
-  ff=$(basename $f)
-  if [[ "$ff" != "." &&
-    "$ff" != ".." &&
-    "$ff" != ".git" &&
-    "$ff" != ".gitmodule" ]]; then
-    echo "link $pwd/$ff"
-		if [[ -f ~/$ff ]]; then
-			rm -f ~/$ff
-		fi
-		if [[ -d ~/$ff ]]; then
-			rm -rf  ~/$ff
-		fi
-    ln -s "$pwd/$ff" ~
-  fi
+for f in $(find config -iname ".*" -d 1) ; do
+	ff=$(basename $f)
+	echo "link $pwd/config/$ff -> $HOME/$ff"
+	ln -Fs "$pwd/config/$ff" "$HOME"
 done

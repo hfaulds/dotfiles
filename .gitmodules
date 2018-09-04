@@ -1,21 +1,21 @@
-[submodule ".vim/bundle/ack.vim"]
-	path = .vim/bundle/ack.vim
+[submodule "config/.vim/bundle/ack.vim"]
+	path = config/.vim/bundle/ack.vim
 	url = git@github.com:mileszs/ack.vim.git
-[submodule ".vim/bundle/comments.vim"]
-	path = .vim/bundle/comments.vim
+[submodule "config/.vim/bundle/comments.vim"]
+	path = config/.vim/bundle/comments.vim
 	url = git@github.com:sudar/comments.vim.git
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
+[submodule "config/.vim/bundle/supertab"]
+	path = config/.vim/bundle/supertab
 	url = git@github.com:ervandew/supertab.git
-[submodule ".vim/bundle/typescript-vim"]
-	path = .vim/bundle/typescript-vim
+[submodule "config/.vim/bundle/typescript-vim"]
+	path = config/.vim/bundle/typescript-vim
 	url = git@github.com:leafgarland/typescript-vim.git
-[submodule ".vim/bundle/vim-gitgutter"]
-	path = .vim/bundle/vim-gitgutter
+[submodule "config/.vim/bundle/vim-gitgutter"]
+	path = config/.vim/bundle/vim-gitgutter
 	url = git@github.com:airblade/vim-gitgutter.git
-[submodule ".vim/bundle/vim-go"]
-	path = .vim/bundle/vim-go
+[submodule "config/.vim/bundle/vim-go"]
+	path = config/.vim/bundle/vim-go
 	url = git@github.com:fatih/vim-go.git
-[submodule ".vim/bundle/lightline.vim"]
-	path = .vim/bundle/lightline.vim
-	url = https://github.com/itchyny/lightline.vim
+[submodule "config/.vim/bundle/lightline.vim"]
+	path = config/.vim/bundle/lightline.vim
+	url = git@github.com:itchyny/lightline.vim.git
