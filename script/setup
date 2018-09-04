@@ -13,7 +13,7 @@ git submodule update
 
 pwd=$(pwd)
 
-for f in $(find config -iname ".*" -d 1) ; do
+for f in $(find config -d 1) ; do
 	ff=$(basename $f)
 	echo "link $pwd/config/$ff -> $HOME/$ff"
 	ln -Fs "$pwd/config/$ff" "$HOME"
