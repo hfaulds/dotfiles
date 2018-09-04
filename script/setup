@@ -21,10 +21,10 @@ for f in $(find . -iname ".*" -d 1) ; do
     "$ff" != ".gitmodule" ]]; then
     echo "link $pwd/$ff"
 		if [[ -f ~/$ff ]]; then
-			rm ~/$ff
+			rm -f ~/$ff
 		fi
 		if [[ -d ~/$ff ]]; then
-			rm -r ~/$ff
+			rm -rf  ~/$ff
 		fi
     ln -s "$pwd/$ff" ~
   fi
