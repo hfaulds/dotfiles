@@ -111,6 +111,8 @@ imap kj <ESC>
 
 autocmd FileType go set noexpandtab
 autocmd FileType ruby set expandtab
+autocmd FileType proto set expandtab
+autocmd FileType json set expandtab
 
 " Treat scss files as css
 au BufRead,BufNewFile *.scss set filetype=css
