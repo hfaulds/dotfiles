@@ -199,3 +199,17 @@ let g:lightline = {
       \   'right': [ [ 'lineinfo' ], [ 'fileformat' ] ]
       \ },
       \ }
+
+nnoremap <silent> <Leader>t :!script/test<CR>
+
+function! Test1() abort
+  echom go#util#Offset(line('.'), col('.'))
+endfunction
+
+function! s:go_guru_scope_from_git_root()
+  let gitroot = system("git rev-parse --show-toplevel | tr -d '\n'")
+  let pattern = escape(go#util#gopath() . "/src/", '\ /')
+  return substitute(gitroot, pattern, "", "") . "/... -vendor/"
+endfunction
+
+au FileType go silent exe "GoGuruScope " . s:go_guru_scope_from_git_root()
