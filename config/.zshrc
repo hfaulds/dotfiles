@@ -50,7 +50,8 @@ activate_virtualenv() {
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-alias vi=vim
+alias vi=nvim
+alias vim=nvim
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"

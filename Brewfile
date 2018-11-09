@@ -1,7 +1,6 @@
 tap 'mscharley/homebrew'
 
 cask '1password'
-# cask 'amphetamine'
 cask 'fantastical'
 cask 'daisydisk'
 cask 'docker'
@@ -25,6 +24,6 @@ brew 'mas'
 brew 'the_silver_searcher'
 brew 'rbenv'
 brew 'tmux'
-brew 'vim', args: ['with-client-server']
+brew 'nvim'
 
 mas 'Amphetamine', id: 937984704
