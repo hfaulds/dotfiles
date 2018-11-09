@@ -193,4 +193,9 @@ let g:lightline = {
       \             [ 'readonly', 'relativepath', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ], [ 'fileformat' ] ]
       \ },
+      \ 'inactive': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'relativepath', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'fileformat' ] ]
+      \ },
       \ }
