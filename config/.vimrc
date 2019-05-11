@@ -213,3 +213,10 @@ function! s:go_guru_scope_from_git_root()
 endfunction
 
 au FileType go silent exe "GoGuruScope " . s:go_guru_scope_from_git_root()
+
+augroup syntax
+	au BufNewFile,BufReadPost *.workflow so ~/.vim/syntax/workflow.vim
+augroup END
+au BufNewFile,BufReadPost *.workflow set filetype=workflow
+
+"autocmd FileType ruby autocmd BufWritePre !bin/rubocop -a <afile>
