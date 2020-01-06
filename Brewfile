@@ -1,6 +1,8 @@
 tap 'mscharley/homebrew'
 
 cask '1password'
+cask 'alfred'
+cask 'bitbar'
 cask 'fantastical'
 cask 'daisydisk'
 cask 'docker'

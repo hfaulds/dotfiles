@@ -111,6 +111,7 @@ imap kj <ESC>
 
 autocmd FileType go set noexpandtab
 autocmd FileType ruby set expandtab
+autocmd FileType eruby set expandtab
 autocmd FileType proto set expandtab
 autocmd FileType json set expandtab
 
@@ -220,3 +221,6 @@ augroup END
 au BufNewFile,BufReadPost *.workflow set filetype=workflow
 
 "autocmd FileType ruby autocmd BufWritePre !bin/rubocop -a <afile>
+"
+let g:go_bin_path = "/usr/local/bin/go"
+let $GOPATH = $HOME."/go"
