@@ -23,7 +23,6 @@ brew 'awscli'
 brew 'mscharley/homebrew/alacritty', args: ['HEAD']
 brew 'git'
 brew 'go'
-brew 'fzf'
 brew 'nodenv'
 brew 'mas'
 brew 'the_silver_searcher'
