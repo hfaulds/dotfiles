@@ -6,6 +6,8 @@ let mapleader = ","
 " Setup basic Vim behaviour
 " ----------------------------------------------
 
+syntax on
+
 set number          " Line numbers
 set scrolloff=3     " More context around cursor
 set shiftwidth=2    " Number of spaces to autoformat tabs to
