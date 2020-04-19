@@ -123,8 +123,19 @@ let g:lightline = {
       \ },
       \ }
 
-let g:go_rename_command = 'gopls'
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_bin_path = "/usr/local/bin/go"
-let $GOPATH = $HOME."/go"
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'go': ['/Users/haydenfaulds/go/bin/gopls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'ruby': ['/usr/local/bin/solargraph', 'stdio'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ }
+
+command!          Definition     call LanguageClient#textDocument_definition()
+command!          TypeDefinition call LanguageClient#textDocument_typeDefinition()
+command! -nargs=1 Rename         call LanguageClient#textDocument_rename({'newName': <f-args>})
+command!          Format         call LanguageClient#textDocument_formatting()
+command!          References     call LanguageClient#textDocument_references()

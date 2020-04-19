@@ -22,4 +22,8 @@ done
 defaults write com.apple.Dock tilesize -int 1
 defaults write com.apple.Dock autohide-delay -float 5
 
+gem install solargraph
+~/.cargo/bin/rustup stable rls
+npm install -g javascript-typescript-langserver
+
 killall Dock
