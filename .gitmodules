@@ -4,9 +4,6 @@
 [submodule "config/.vim/pack/hfaulds/start/comments.vim"]
 	path = config/.vim/pack/hfaulds/start/comments.vim
 	url = git@github.com:sudar/comments.vim.git
-[submodule "config/.vim/pack/hfaulds/start/supertab.git"]
-	path = config/.vim/pack/hfaulds/start/supertab.git
-	url = git@github.com:ervandew/supertab.git
 [submodule "config/.vim/pack/hfaulds/start/typescript-vim"]
 	path = config/.vim/pack/hfaulds/start/typescript-vim
 	url = git@github.com:leafgarland/typescript-vim.git
@@ -19,3 +16,9 @@
 [submodule "config/.vim/pack/hfaulds/start/lightline.vim"]
 	path = config/.vim/pack/hfaulds/start/lightline.vim
 	url = git@github.com:itchyny/lightline.vim.git
+[submodule "config/.vim/pack/hfaulds/start/supertab"]
+	path = config/.vim/pack/hfaulds/start/supertab
+	url = git@github.com:ervandew/supertab.git
+[submodule "config/.vim/pack/hfaulds/start/rust.vim"]
+	path = config/.vim/pack/hfaulds/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim

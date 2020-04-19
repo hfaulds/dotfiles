@@ -13,6 +13,7 @@ set scrolloff=3     " More context around cursor
 set shiftwidth=2    " Number of spaces to autoformat tabs to
 set tabstop=2       " Number of spaces to display tabs as
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
+set nowrap
 
 " Search options
 set ignorecase
@@ -122,13 +123,8 @@ let g:lightline = {
       \ },
       \ }
 
-function! s:go_guru_scope_from_git_root()
-  let gitroot = system("git rev-parse --show-toplevel | tr -d '\n'")
-  let pattern = escape(go#util#gopath() . "/src/", '\ /')
-  return substitute(gitroot, pattern, "", "") . "/... -vendor/"
-endfunction
-
-au FileType go silent exe "GoGuruScope " . s:go_guru_scope_from_git_root()
-
+let g:go_rename_command = 'gopls'
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 let g:go_bin_path = "/usr/local/bin/go"
 let $GOPATH = $HOME."/go"
