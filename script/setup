@@ -27,5 +27,5 @@ defaults write com.apple.Dock autohide-delay -float 5
 killall Dock
 
 echo "install language servers"
-sudo gem install solargraph
+gem install solargraph
 npm install -g javascript-typescript-langserver
