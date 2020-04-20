@@ -16,3 +16,6 @@
 [submodule "config/.vim/pack/hfaulds/start/LanguageClient-neovim.git"]
 	path = config/.vim/pack/hfaulds/start/LanguageClient-neovim.git
 	url = git@github.com:autozimu/LanguageClient-neovim.git
+[submodule "config/.vim/pack/hfaulds/start/editorconfig-vim.git"]
+	path = config/.vim/pack/hfaulds/start/editorconfig-vim.git
+	url = https://github.com/editorconfig/editorconfig-vim.git

@@ -1,0 +1,52 @@
+; https://editorconfig.org/
+
+root = true
+
+[*]
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+end_of_line = lf
+indent_style = space
+indent_size = 2
+
+[{go.mod,go.sum,*.go,.gitmodules}]
+indent_style = tab
+indent_size = 8
+
+[Makefile]
+indent_style = tab
+indent_size = 8
+
+[*.md]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = false
+
+[Dockerfile]
+indent_style = space
+indent_size = 4
+
+[*.rb]
+indent_style = space
+indent_size = 2
+
+[*.{js,json,ts,tsx}]
+indent_style = space
+indent_size = 2
+
+[*.html]
+indent_style = space
+indent_size = 2
+
+[*.py]
+indent_style = space
+indent_size = 4
+
+[*.{less, yml}]
+indent_style = space
+indent_size = 2
+
+[.vimrc]
+indent_style = space
+indent_size = 2
