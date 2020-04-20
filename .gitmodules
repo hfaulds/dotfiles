@@ -18,4 +18,4 @@
 	url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "config/.tmux/plugins/tpm"]
 	path = config/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
+	url = git@github.com:tmux-plugins/tpm.git
