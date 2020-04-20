@@ -89,6 +89,8 @@ let g:lightline = {
 
 set hidden
 
+execute "!bash ~/.vim/pack/hfaulds/start/LanguageClient-neovim.git/setup.sh"
+
 let g:LanguageClient_loggingLevel = 'INFO'
 let g:LanguageClient_virtualTextPrefix = ''
 let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
