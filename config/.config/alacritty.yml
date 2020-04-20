@@ -76,6 +76,7 @@ font:
   use_thin_strokes: true
 
 # Colors (Darcula)
+# https://github.com/eendroroy/alacritty-theme
 colors:
   # Default colors
   primary:
