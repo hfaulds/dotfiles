@@ -10,9 +10,6 @@
 [submodule "config/.vim/pack/hfaulds/start/lightline.vim"]
 	path = config/.vim/pack/hfaulds/start/lightline.vim
 	url = git@github.com:itchyny/lightline.vim.git
-[submodule "config/.vim/pack/hfaulds/start/supertab"]
-	path = config/.vim/pack/hfaulds/start/supertab
-	url = git@github.com:ervandew/supertab.git
 [submodule "config/.vim/pack/hfaulds/start/LanguageClient-neovim.git"]
 	path = config/.vim/pack/hfaulds/start/LanguageClient-neovim.git
 	url = git@github.com:autozimu/LanguageClient-neovim.git
