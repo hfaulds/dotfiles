@@ -1,1 +1,3 @@
 config/.config
+config/.tmux/plugins
+config/.vim/.netrwhist

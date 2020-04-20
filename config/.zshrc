@@ -65,7 +65,3 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.in
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 
 export GO111MODULE=auto
-# fnm
-eval "$(fnm env --multi)"
-
-source /Users/haydenfaulds/Library/Preferences/org.dystroy.broot/launcher/bash/br

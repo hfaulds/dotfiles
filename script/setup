@@ -6,8 +6,10 @@ if [ ! -f "/usr/local/bin/brew" ]; then
   /usr/bin/ruby ./script/homebrew
 fi
 
-/usr/local/bin/brew bundle
+echo "brew bundle"
+#/usr/local/bin/brew bundle
 
+echo "git submodule update"
 git submodule init
 git submodule update
 
@@ -19,11 +21,11 @@ for f in $(find config -d 1) ; do
 	ln -Fs "$pwd/config/$ff" "$HOME"
 done
 
+echo "macos defaults"
 defaults write com.apple.Dock tilesize -int 1
 defaults write com.apple.Dock autohide-delay -float 5
-
-gem install solargraph
-~/.cargo/bin/rustup stable rls
-npm install -g javascript-typescript-langserver
-
 killall Dock
+
+echo "install language servers"
+sudo gem install solargraph
+npm install -g javascript-typescript-langserver
