@@ -91,10 +91,13 @@ set hidden
 
 execute "!bash -c 'cd ~/.vim/pack/hfaulds/start/LanguageClient-neovim.git && ./install.sh'"
 
+" Language Client Settings
 let g:LanguageClient_loggingLevel = 'INFO'
 let g:LanguageClient_virtualTextPrefix = ''
 let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
 let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
+
+" Language Client Language Specific Settings
 let g:LanguageClient_serverCommands = {
     \ 'go': ['/Users/haydenfaulds/go/bin/gopls'],
     \ 'javascript': ['javascript-typescript-stdio'],
@@ -104,25 +107,14 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ }
 
+" Language Client Autocomplete
+set completefunc=LanguageClient#complete
+let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
+
+" Language Client Commands
 command!          Definition     call LanguageClient#textDocument_definition()
 command!          TypeDefinition call LanguageClient#textDocument_typeDefinition()
 command! -nargs=1 Rename         call LanguageClient#textDocument_rename({'newName': <f-args>})
 command!          Format         call LanguageClient#textDocument_formatting()
 command!          References     call LanguageClient#textDocument_references()
 command!          Info           call LanguageClient#textDocument_hover()
-
-set completefunc=LanguageClient#complete
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col
-    return "\<tab>"
-  endif
-
-  let char = getline('.')[col - 1]
-  if char =~ '\s'
-    return "\<tab>"
-  endif
-
-  return "\<c-x>\<c-u>"
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
