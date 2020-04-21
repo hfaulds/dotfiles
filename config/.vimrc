@@ -89,7 +89,7 @@ let g:lightline = {
 
 set hidden
 
-execute "!bash -c 'cd ~/.vim/pack/hfaulds/start/LanguageClient-neovim.git && ./install.sh'"
+silent execute "!bash -c 'cd ~/.vim/pack/hfaulds/start/LanguageClient-neovim.git && ./install.sh'"
 
 " Language Client Settings
 let g:LanguageClient_loggingLevel = 'INFO'
