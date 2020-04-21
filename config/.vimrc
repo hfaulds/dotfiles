@@ -112,9 +112,32 @@ set completefunc=LanguageClient#complete
 let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 
 " Language Client Commands
-command!          Definition     call LanguageClient#textDocument_definition()
-command!          TypeDefinition call LanguageClient#textDocument_typeDefinition()
-command! -nargs=1 Rename         call LanguageClient#textDocument_rename({'newName': <f-args>})
-command!          Format         call LanguageClient#textDocument_formatting()
-command!          References     call LanguageClient#textDocument_references()
-command!          Info           call LanguageClient#textDocument_hover()
+command!                                Definition     call LanguageClient#textDocument_definition()
+command!                                TypeDefinition call LanguageClient#textDocument_typeDefinition()
+command! -nargs=1                       Rename         call LanguageClient#textDocument_rename({'newName': <f-args>})
+command!                                Format         call LanguageClient#textDocument_formatting()
+command!                                References     call LanguageClient#textDocument_references()
+command!                                Info           call LanguageClient#textDocument_hover()
+
+" Rename File Command
+command! -nargs=1 -complete=file -bang  RenameFile     call RenameFile("<args>", "<bang>")
+function! RenameFile(name, bang)
+    let l:curfile = expand("%:p")
+    let l:curfile_stripped = substitute(l:curfile, " ", "\\\\ ", "g")
+    let l:curfilepath = expand("%:p:h")
+    let l:newname = l:curfilepath . "/" . a:name
+    let l:newname = substitute(l:newname, " ", "\\\\ ", "g")
+    let v:errmsg = ""
+
+    silent! exe "saveas " . a:bang . " " . l:newname
+    if v:errmsg =~# '^$\|^E329'
+        if expand("%:p") !=# l:curfile && filewritable(expand("%:p"))
+            silent exe "bwipe! " . l:curfile_stripped
+            if delete(l:curfile)
+                echoerr "Could not delete " . l:curfile
+            endif
+        endif
+    else
+        echoerr v:errmsg
+    endif
+endfunction
