@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Encrypt a file to send it securely to another Hubber
+#
+# Use https://gpgtools.org/ to an easy to use decryption UI.
+#
+ # Usage:
+#   enc4hub larsxschneider /path/to/file
+#
+set -e
+recipient=$1
+file=$2
+
+# Import the public key of the recipient from GitHub
+gpg --import <(curl --silent https://github.com/$recipient.gpg)
+
+# Encrypt the file with the recipient's key and sign it with my own key
+gpg --encrypt --sign --armor --trust-model always --recipient $recipient@github.com "$file"

@@ -29,3 +29,4 @@ killall Dock
 echo "install language servers"
 gem install solargraph
 npm install -g javascript-typescript-langserver
+npm install -g bash-language-server

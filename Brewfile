@@ -20,6 +20,7 @@ cask 'xquartz'
 brew 'awscli'
 brew 'mscharley/homebrew/alacritty', args: ['HEAD']
 brew 'git'
+brew 'git-delta'
 brew 'go'
 brew 'nodenv'
 brew 'mas'

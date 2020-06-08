@@ -1,28 +1,30 @@
-[user]
-  name = Hayden Faulds
-  email = fauldsh@gmail.com
-[core]
-  excludesfile = /Users/haydenfaulds/.gitignore_global
-  pager = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+[alias]
+  branches = "!git for-each-ref --count=20 --sort=-committerdate --format='%(committerdate:short)%09%(refname:short)%09%(subject)' refs/heads refs/remotes | column -ts $'\t'"
 [color]
   diff = auto
   status = auto
   branch = auto
   ui = always
-[alias]
-  branches = "!git for-each-ref --count=20 --sort=-committerdate --format='%(committerdate:short)%09%(refname:short)%09%(subject)' refs/heads refs/remotes | column -ts $'\t'"
+[credential]
+  helper = osxkeychain
+[core]
+  excludesfile = /Users/haydenfaulds/.gitignore_global
+  pager = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 [branch]
   autosetuprebase = always
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[github]
+  user = hfaulds
+[interactive]
+  diffFilter = delta --color-only
 [push]
   default = current
 [url "git@github.com:"]
   insteadOf = https://github.com/
-[github]
-	user = hfaulds
-[credential]
-	helper = osxkeychain
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+[user]
+  name = Hayden Faulds
+  email = fauldsh@gmail.com

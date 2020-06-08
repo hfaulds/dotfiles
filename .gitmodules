@@ -22,3 +22,6 @@
 [submodule "config/.vim/pack/hfaulds/start/supertab"]
 	path = config/.vim/pack/hfaulds/start/supertab
 	url = git@github.com:ervandew/supertab.git
+[submodule "config/.vim/pack/hfaulds/start/ron.vim"]
+	path = config/.vim/pack/hfaulds/start/ron.vim
+	url = git@github.com:ron-rs/ron.git
