@@ -2,6 +2,7 @@ tap 'mscharley/homebrew'
 
 cask '1password'
 cask 'alfred'
+cask 'amethyst'
 cask 'bitbar'
 cask 'fantastical'
 cask 'firefox'
@@ -16,6 +17,7 @@ cask 'spotify'
 cask 'typora'
 cask 'whatsapp'
 cask 'xquartz'
+cask 'zoom'
 
 brew 'awscli'
 brew 'mscharley/homebrew/alacritty', args: ['HEAD']

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 set -e
 
@@ -20,6 +20,8 @@ for f in $(find config -d 1) ; do
 	echo "link $pwd/config/$ff -> $HOME/$ff"
 	ln -Fs "$pwd/config/$ff" "$HOME"
 done
+
+source ~/.zshrc
 
 echo "macos defaults"
 defaults write com.apple.Dock tilesize -int 1
