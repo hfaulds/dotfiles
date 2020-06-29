@@ -99,7 +99,7 @@ let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.l
 
 " Language Client Language Specific Settings
 let g:LanguageClient_serverCommands = {
-    \ 'go':             ['/Users/haydenfaulds/go/bin/gopls'],
+    \ 'go':             ['~/go/bin/gopls'],
     \ 'javascript':     ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'typescript':     ['javascript-typescript-stdio'],
@@ -141,4 +141,10 @@ function! RenameFile(name, bang)
     else
         echoerr v:errmsg
     endif
+endfunction
+
+" Create Directory
+command! Mkdir call Mkdir()
+function! Mkdir()
+  silent! !mkdir -p %:h
 endfunction

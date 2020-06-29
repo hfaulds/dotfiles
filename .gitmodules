@@ -25,3 +25,6 @@
 [submodule "config/.vim/pack/hfaulds/start/ron.vim"]
 	path = config/.vim/pack/hfaulds/start/ron.vim
 	url = git@github.com:ron-rs/ron.git
+[submodule "config/.vim/pack/hfaulds/start/fzf.vim"]
+	path = config/.vim/pack/hfaulds/start/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git
