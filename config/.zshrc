@@ -66,3 +66,5 @@ export GEM_PATH=~/.gems
 export GEM_HOME=~/.gems
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. ~/.github/tokens
