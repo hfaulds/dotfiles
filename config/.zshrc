@@ -25,10 +25,13 @@ export histsize=100000
 export histfile="$home/.history"
 export savehist=$histsize
 
-export editor=vi
-# gnu screen sets -o vi if editor=vi, so we have to force it back. what the
-# hell, gnu?
-set -o emacs
+export editor=nvim
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # gnu screen sets -o vi if editor=vi, so we have to force it back. what the
+  # hell, gnu?
+  set -o emacs
+  set clipboard=unnamed
+fi
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -55,11 +58,16 @@ alias vim=nvim
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="`go env GOPATH`/bin:$PATH"
-set clipboard=unnamed
+if [ -x "$(command -v go)" ] ; then
+  export PATH="`go env GOPATH`/bin:$PATH"
+fi
 
-eval "$(rbenv init -)"
-eval "$(nodenv init -)"
+if [ -x "$(command -v rbenv)" ] ; then
+  eval "$(rbenv init -)"
+fi
+if [ -x "$(command -v nodenv)" ] ; then
+  eval "$(nodenv init -)"
+fi
 
 export GO111MODULE=auto
 export GEM_PATH=~/.gems

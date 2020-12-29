@@ -66,11 +66,11 @@ hi clear SignColumn
 set signcolumn=yes
 
 let &t_Co=256
-set shell=/bin/zsh
+set shell=zsh
 
 set noswapfile
 
-set rtp+=/usr/local/opt/fzf
+set rtp+=/run/current-system/sw/bin/fzf
 nnoremap <leader>f :FZF<CR>
 
 let g:lightline = {

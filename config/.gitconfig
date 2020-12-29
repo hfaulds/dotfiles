@@ -9,7 +9,9 @@
   helper = osxkeychain
 [core]
   excludesfile = /Users/haydenfaulds/.gitignore_global
-  pager = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+  #pager = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+  pager = /nix/store/skhhmmli47xm4qg8d4ca35vzi96kjq91-git-2.29.2/share/git/contrib/diff-highlight/diff-highlight | less
+	editor = nvim
 [branch]
   autosetuprebase = always
 [filter "lfs"]

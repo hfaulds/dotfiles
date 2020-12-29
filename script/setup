@@ -1,16 +1,18 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 set -e
 
-if [ ! -f "/usr/local/bin/brew" ]; then
-  /usr/bin/ruby ./script/homebrew
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  if [ ! -f "/usr/local/bin/brew" ]; then
+    /usr/bin/ruby ./script/homebrew
+  fi
+  
+  echo "brew bundle"
+  /usr/local/bin/brew bundle
+  
+  echo "brew post-install steps"
+  $(brew --prefix)/opt/fzf/install
 fi
-
-echo "brew bundle"
-/usr/local/bin/brew bundle
-
-echo "brew post-install steps"
-$(brew --prefix)/opt/fzf/install
 
 echo "git submodule update"
 git submodule init
@@ -18,21 +20,25 @@ git submodule update
 
 pwd=$(pwd)
 
-for f in $(find config -d 1) ; do
-	ff=$(basename $f)
-	echo "link $pwd/config/$ff -> $HOME/$ff"
-	ln -Fs "$pwd/config/$ff" "$HOME"
+for f in $(find config -maxdepth 1) ; do
+  if [[ "$f" != "config" ]]; then
+    ff=$(basename $f)
+    echo "link $pwd/config/$ff -> $HOME/$ff"
+    ln -fs "$pwd/config/$ff" "$HOME"
+  fi
 done
 
 source ~/.zshrc
 
-echo "macos defaults"
-defaults write com.apple.Dock tilesize -int 1
-defaults write com.apple.Dock autohide-delay -float 5
-killall Dock
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  echo "macos defaults"
+  defaults write com.apple.Dock tilesize -int 1
+  defaults write com.apple.Dock autohide-delay -float 5
+  killall Dock
 
-echo "install language servers"
-gem install solargraph
-npm install -g javascript-typescript-langserver
-npm install -g bash-language-server
-go get golang.org/x/tools/gopls@latest
+  echo "install language servers"
+  gem install solargraph
+  npm install -g javascript-typescript-langserver
+  npm install -g bash-language-server
+  go get golang.org/x/tools/gopls@latest
+fi
