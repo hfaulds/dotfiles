@@ -28,3 +28,6 @@
 [submodule "config/.vim/pack/hfaulds/start/fzf.vim"]
 	path = config/.vim/pack/hfaulds/start/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
+[submodule "config/.vim/pack/hfaulds/start/typescript-vim"]
+	path = config/.vim/pack/hfaulds/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git

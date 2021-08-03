@@ -2,15 +2,32 @@
 
 set -e
 
-if [ ! -f "/usr/local/bin/brew" ]; then
-  /usr/bin/ruby ./script/homebrew
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  sh <(curl -L https://nixos.org/nix/install) --daemon
+
+  nix-env -iA nixpkgs.fzf
+  if [ -n "${commands[fzf-share]}" ]; then
+    source "$(fzf-share)/key-bindings.zsh"
+    source "$(fzf-share)/completion.zsh"
+  fi
+  nix-env -iA nvim
+  nix-env -iA silver-searcher
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  if [ ! -f "/usr/local/bin/brew" ]; then
+    /usr/bin/ruby ./script/homebrew
+  fi
+
+  echo "brew bundle"
+  /usr/local/bin/brew bundle
+
+  echo "brew post-install steps"
+  $(brew --prefix)/opt/fzf/install
+
+  echo "macos defaults"
+  defaults write com.apple.Dock tilesize -int 1
+  defaults write com.apple.Dock autohide-delay -float 5
+  killall Dock
 fi
-
-echo "brew bundle"
-/usr/local/bin/brew bundle
-
-echo "brew post-install steps"
-$(brew --prefix)/opt/fzf/install
 
 echo "git submodule update"
 git submodule init
@@ -25,11 +42,6 @@ for f in $(find config -d 1) ; do
 done
 
 source ~/.zshrc
-
-echo "macos defaults"
-defaults write com.apple.Dock tilesize -int 1
-defaults write com.apple.Dock autohide-delay -float 5
-killall Dock
 
 echo "install language servers"
 gem install solargraph

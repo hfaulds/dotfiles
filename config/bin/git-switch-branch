@@ -1,5 +1,5 @@
 #!/bin/bash
 
-branches=$(git branch -vv) &&
+branches=$(git branch --sort=-committerdate --format="%(refname:short)") &&
 branch=$(echo "$branches" | fzf +m) &&
 git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")

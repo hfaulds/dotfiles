@@ -22,9 +22,7 @@
 [interactive]
   diffFilter = delta --color-only
 [push]
-  default = current
-[url "git@github.com:"]
-  insteadOf = https://github.com/
+	default = current
 [user]
   name = Hayden Faulds
   email = fauldsh@gmail.com

@@ -62,9 +62,9 @@ eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 
 export GO111MODULE=auto
-export GEM_PATH=~/.gems
-export GEM_HOME=~/.gems
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 . ~/.github/tokens
+export GITHUB_PATH=~/projects/github.com/github/github
+export PATH="$HOME/projects/dev.azure.com/mseng/AzDevNext/.dotnet:$PATH"

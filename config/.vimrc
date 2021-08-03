@@ -104,24 +104,15 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'typescript':     ['javascript-typescript-stdio'],
     \ 'sh':             ['~/.nodenv/versions/10.8.0/bin/bash-language-server', 'start'],
-    \ 'ruby':           ['/usr/local/bin/solargraph', 'stdio'],
     \ 'rust':           ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ }
+    "\ 'ruby':           ['/usr/local/bin/solargraph', 'stdio'],
 
 " Language Client Autocomplete
 set completefunc=LanguageClient#complete
 let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 
-" Language Client Commands
-command!                                Definition     call LanguageClient#textDocument_definition()
-command!                                TypeDefinition call LanguageClient#textDocument_typeDefinition()
-command! -nargs=1                       Rename         call LanguageClient#textDocument_rename({'newName': <f-args>})
-command!                                Format         call LanguageClient#textDocument_formatting()
-command!                                References     call LanguageClient#textDocument_references()
-command!                                Info           call LanguageClient#textDocument_hover()
-
-" Rename File Command
-command! -nargs=1 -complete=file -bang  RenameFile     call RenameFile("<args>", "<bang>")
+" File functions
 function! RenameFile(name, bang)
     let l:curfile = expand("%:p")
     let l:curfile_stripped = substitute(l:curfile, " ", "\\\\ ", "g")
@@ -143,8 +134,26 @@ function! RenameFile(name, bang)
     endif
 endfunction
 
-" Create Directory
-command! Mkdir call Mkdir()
 function! Mkdir()
   silent! !mkdir -p %:h
 endfunction
+
+function! Search()
+  let l:term = expand("<cword>")
+  exec ":Ack!" l:term
+endfunction
+
+" Language Client Commands
+command!                                Definition     call LanguageClient#textDocument_definition()
+command!                                TypeDefinition call LanguageClient#textDocument_typeDefinition()
+command! -nargs=1                       Rename         call LanguageClient#textDocument_rename({'newName': <f-args>})
+command!                                Format         call LanguageClient#textDocument_formatting()
+command!                                References     call LanguageClient#textDocument_references()
+command!                                Info           call LanguageClient#textDocument_hover()
+
+" File commands
+command! Mkdir call Mkdir()
+command! -nargs=1 -complete=file -bang  RenameFile     call RenameFile("<args>", "<bang>")
+
+" Search
+command! Search call Search()

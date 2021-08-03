@@ -11,7 +11,7 @@
 # <bitbar.desc>Display current UTC time in the menu bar, with various timezones in the drop-down menu</bitbar.desc>
 # <bitbar.image>https://cloud.githubusercontent.com/assets/6187908/12207887/464ff8b2-b617-11e5-9d61-787eed228552.png</bitbar.image>
 
-ZONES="Europe/Madrid America/New_York America/Los_Angeles Asia/Seoul"
+ZONES="Europe/Madrid America/New_York America/Los_Angeles Asia/Seoul Asia/Kolkata"
 date +'%H:%M %Z'
 echo '---'
 for zone in $ZONES; do
