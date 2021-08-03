@@ -3,17 +3,22 @@
 set -e
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  echo "brew bundle"
+  brew bundle --file Brewfile.linux
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
   echo "macos defaults"
   defaults write com.apple.Dock tilesize -int 1
   defaults write com.apple.Dock autohide-delay -float 5
   killall Dock
-fi
 
-echo "brew bundle"
-brew bundle
+  echo "brew bundle"
+  brew bundle
+fi
 
 echo "brew post-install steps"
 $(brew --prefix)/opt/fzf/install

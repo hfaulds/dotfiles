@@ -1,0 +1,5 @@
+brew 'fzf'
+brew 'git'
+brew 'git-delta'
+brew 'the_silver_searcher'
+brew 'nvim'
