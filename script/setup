@@ -3,6 +3,7 @@
 set -e
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   echo "macos defaults"
@@ -12,7 +13,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 echo "brew bundle"
-/usr/local/bin/brew bundle
+brew bundle
 
 echo "brew post-install steps"
 $(brew --prefix)/opt/fzf/install
