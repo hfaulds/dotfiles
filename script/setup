@@ -2,13 +2,15 @@
 
 set -e
 
+echo "install homebrew"
+export CI=true
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
   echo "brew bundle"
-  brew bundle --file Brewfile.linux
+  brew bundle -q --file Brewfile.linux
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
   echo "macos defaults"
@@ -21,7 +23,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 echo "brew post-install steps"
-$(brew --prefix)/opt/fzf/install
+$(brew --prefix)/opt/fzf/install --all
 
 echo "git submodule update"
 git submodule init
@@ -29,16 +31,27 @@ git submodule update
 
 pwd=$(pwd)
 
-for f in $(find config -d 1) ; do
-	ff=$(basename $f)
-	echo "link $pwd/config/$ff -> $HOME/$ff"
-	ln -Fs "$pwd/config/$ff" "$HOME"
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  conf=$(find config -maxdepth 1 -print0)
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  conf=$(find config -d 1 -print0)
+fi
+
+echo "$conf" | while read -d $'\0' f; do
+  ff=$(basename $f)
+  echo "link $pwd/config/$ff -> $HOME/$ff"
+  rm -rf $HOME/$ff
+  ln -Fs "$pwd/config/$ff" "$HOME"
 done
 
-source ~/.zshrc
+if [[ "$SHELL" == "/bin/zsh" ]]; then
+  source ~/.zshrc
+fi
 
 echo "install language servers"
-gem install solargraph
-npm install -g javascript-typescript-langserver
-npm install -g bash-language-server
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  gem install solargraph
+  npm install -g javascript-typescript-langserver
+  npm install -g bash-language-server
+fi
 go get golang.org/x/tools/gopls@latest
