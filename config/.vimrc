@@ -70,7 +70,7 @@ set shell=/bin/zsh
 
 set noswapfile
 
-set rtp+=/usr/local/opt/fzf
+execute("set rtp+=" . system("dirname $(dirname $(which fzf))"))
 nnoremap <leader>f :FZF<CR>
 
 let g:lightline = {
