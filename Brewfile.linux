@@ -1,3 +1,4 @@
+brew 'coreutils'
 brew 'fzf'
 brew 'git'
 brew 'git-delta'

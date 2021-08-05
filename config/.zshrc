@@ -69,4 +69,3 @@ mkdir -p ~/.github/tokens
 . ~/.github/tokens
 export GITHUB_PATH=~/projects/github.com/github/github
 export PATH="$HOME/projects/dev.azure.com/mseng/AzDevNext/.dotnet:$PATH"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
