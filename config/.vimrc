@@ -70,8 +70,9 @@ set shell=/bin/zsh
 
 set noswapfile
 
+let g:fzf_preview_window = []
 execute("set rtp+=" . system("dirname $(dirname $(which fzf))"))
-nnoremap <leader>f :FZF<CR>
+nnoremap <leader>f :GFiles<CR>
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',
