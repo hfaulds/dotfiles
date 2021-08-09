@@ -65,7 +65,14 @@ export GO111MODULE=auto
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-mkdir -p ~/.github/tokens
+mkdir -p ~/.github
+touch ~/.github/tokens
 . ~/.github/tokens
 export GITHUB_PATH=~/projects/github.com/github/github
 export PATH="$HOME/projects/dev.azure.com/mseng/AzDevNext/.dotnet:$PATH"
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
