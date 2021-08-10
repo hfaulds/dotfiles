@@ -9,7 +9,7 @@
   helper = osxkeychain
 [core]
   excludesfile = /Users/haydenfaulds/.gitignore_global
-  pager = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+  pager = "$(dirname $(dirname $(greadlink -f $(which git))))/share/git-core/contrib/diff-highlight/diff-highlight" | less
 [branch]
   autosetuprebase = always
 [filter "lfs"]
