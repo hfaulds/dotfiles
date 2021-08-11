@@ -58,8 +58,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="`go env GOPATH`/bin:$PATH"
 set clipboard=unnamed
 
-eval "$(rbenv init -)"
-eval "$(nodenv init -)"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  eval "$(rbenv init -)"
+  eval "$(nodenv init -)"
+fi
 
 export GO111MODULE=auto
 
