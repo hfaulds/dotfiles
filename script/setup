@@ -2,11 +2,11 @@
 
 set -e
 
-echo "install homebrew"
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  export CI=true
-fi
-if [[ $(which brew)? -eq 1 ]]; then
+if [[ $(which brew || echo "") == ""]]; then
+  echo "install homebrew"
+  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    export CI=true
+  fi
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
