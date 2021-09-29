@@ -2,7 +2,7 @@
 
 set -e
 
-if [[ $(which brew || echo "") == ""]]; then
+if [[ "$(which brew || echo "")" == "" ]]; then
   echo "install homebrew"
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     export CI=true
