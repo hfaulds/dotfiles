@@ -14,7 +14,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
   echo "brew bundle"
-  brew bundle -q --file Brewfile.linux
+  #brew bundle -q --file Brewfile.linux
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
   echo "macos defaults"
@@ -23,7 +23,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   killall Dock
 
   echo "brew bundle"
-  brew bundle
+  #brew bundle
 fi
 
 echo "brew post-install steps"
