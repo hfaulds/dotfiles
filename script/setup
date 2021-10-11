@@ -24,10 +24,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
   echo "brew bundle"
   # brew bundle
-fi
 
-echo "brew post-install steps"
-$(brew --prefix)/opt/fzf/install --all
+  echo "brew post-install steps"
+  $(brew --prefix)/opt/fzf/install --all
+fi
 
 echo "git submodule update"
 git submodule init
