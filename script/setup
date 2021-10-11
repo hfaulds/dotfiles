@@ -14,7 +14,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
   echo "brew bundle"
-  #brew bundle -q --file Brewfile.linux
+  # brew bundle -q --file Brewfile.linux
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
   echo "macos defaults"
@@ -23,7 +23,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   killall Dock
 
   echo "brew bundle"
-  #brew bundle
+  # brew bundle
 fi
 
 echo "brew post-install steps"
@@ -59,10 +59,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   npm install -g bash-language-server
 fi
 
-go get golang.org/x/tools/gopls@latest
+go install golang.org/x/tools/gopls@latest
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo "configure git on codespaces"
   git config --global credential.helper cache
   printf "protocol=https\\nhost=github.com\\nusername=%s\\npassword=%s\\n" "hfaulds" "$GITHUB_TOKEN" | git credential approve
+
+  echo "configuring shell on codespaces"
+  sudo chsh -s "$(which zsh)" "$(whoami)"
 fi
