@@ -69,7 +69,7 @@ export GO111MODULE=auto
 
 mkdir -p ~/.github
 touch ~/.github/tokens
-. ~/.github/tokens
+source ~/.github/tokens
 export GITHUB_PATH=~/projects/github.com/github/github
 export PATH="$HOME/projects/dev.azure.com/mseng/AzDevNext/.dotnet:$PATH"
 
