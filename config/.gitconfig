@@ -9,7 +9,7 @@
   helper = osxkeychain
 [core]
   excludesfile = /Users/haydenfaulds/.gitignore_global
-  pager = "$(dirname $(dirname $(greadlink -f $(which git))))/share/git-core/contrib/diff-highlight/diff-highlight" | less
+  pager = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight | less
 [branch]
   autosetuprebase = always
 [filter "lfs"]
@@ -26,3 +26,7 @@
 [user]
   name = Hayden Faulds
   email = fauldsh@gmail.com
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[init]
+	defaultBranch = main

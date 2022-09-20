@@ -8,7 +8,7 @@ autoload -U compinit
 compinit
 
 # Add paths that should have been there by default
-export PATH="/usr/local/bin:/usr/local/bin:$HOME/bin:$PATH"
+export PATH="/opt/homebrew/bin:$HOME/bin:$PATH"
 
 # by default, ^s freezes terminal output and ^q resumes it. disable that so
 # that those keys can be used for other things.
@@ -48,8 +48,6 @@ activate_virtualenv() {
     fi
 }
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 alias vi=nvim
 alias vim=nvim
 
@@ -60,7 +58,7 @@ set clipboard=unnamed
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   eval "$(rbenv init -)"
-  eval "$(nodenv init -)"
+  eval "$(fnm env --use-on-cd)"
 fi
 
 export GO111MODULE=auto
@@ -73,8 +71,4 @@ source ~/.github/tokens
 export GITHUB_PATH=~/projects/github.com/github/github
 export PATH="$HOME/projects/dev.azure.com/mseng/AzDevNext/.dotnet:$PATH"
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  eval "$(/usr/local/bin/brew shellenv)"
-fi
+eval "$(/opt/homebrew/bin/brew shellenv)"

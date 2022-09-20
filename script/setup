@@ -16,7 +16,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo "brew bundle"
   # brew bundle -q --file Brewfile.linux
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  eval "$(/usr/local/bin/brew shellenv)"
+  # eval "$(/usr/local/bin/brew shellenv)"
   echo "macos defaults"
   defaults write com.apple.Dock tilesize -int 1
   defaults write com.apple.Dock autohide-delay -float 5
@@ -54,7 +54,7 @@ fi
 
 echo "install language servers"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  gem install solargraph
+  gem install --user-install solargraph
   npm install -g javascript-typescript-langserver
   npm install -g bash-language-server
 fi
