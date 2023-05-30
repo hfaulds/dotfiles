@@ -2,7 +2,27 @@
 
 set -e
 
-if [[ "$(which brew || echo "")" == "" ]]; then
+echo "git submodule update"
+git submodule init
+git submodule update
+
+pwd=$(pwd)
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  conf=$(find config -maxdepth 1 -print0)
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  conf=$(find config -d 1 -print0)
+fi
+
+echo "$conf" | while read -d $'\0' f; do
+  ff=$(basename $f)
+  echo "link $pwd/config/$ff -> $HOME/$ff"
+  rm -rf $HOME/$ff
+  ln -Fs "$pwd/config/$ff" "$HOME"
+done
+
+if ! command -v brew &> /dev/null
+then
   echo "install homebrew"
   if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     export CI=true
@@ -29,37 +49,17 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   $(brew --prefix)/opt/fzf/install --all
 fi
 
-echo "git submodule update"
-git submodule init
-git submodule update
-
-pwd=$(pwd)
-
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  conf=$(find config -maxdepth 1 -print0)
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  conf=$(find config -d 1 -print0)
-fi
-
-echo "$conf" | while read -d $'\0' f; do
-  ff=$(basename $f)
-  echo "link $pwd/config/$ff -> $HOME/$ff"
-  rm -rf $HOME/$ff
-  ln -Fs "$pwd/config/$ff" "$HOME"
-done
-
 if [[ "$SHELL" == "/bin/zsh" ]]; then
   source ~/.zshrc
 fi
 
 echo "install language servers"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  gem install --user-install solargraph
   npm install -g javascript-typescript-langserver
   npm install -g bash-language-server
+  go install golang.org/x/tools/gopls@latest
+  cd ~/.vim/pack/hfaulds/start/LanguageClient-neovim.git && ./install.sh
 fi
-
-go install golang.org/x/tools/gopls@latest
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo "configure git on codespaces"
@@ -68,4 +68,28 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   echo "configuring shell on codespaces"
   sudo chsh -s "$(which zsh)" "$(whoami)"
+fi
+
+if ! launchctl list com.1password.SSH_AUTH_SOCK &> /dev/null
+then
+echo "setting up SSH_AUTH_SOCK"
+cat << EOF > ~/Library/LaunchAgents/com.1password.SSH_AUTH_SOCK.plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.1password.SSH_AUTH_SOCK</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string>
+    <string>-c</string>
+    <string>/bin/ln -sf $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock \$SSH_AUTH_SOCK</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>
+EOF
+launchctl load -w ~/Library/LaunchAgents/com.1password.SSH_AUTH_SOCK.plist
 fi
