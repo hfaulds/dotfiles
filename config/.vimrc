@@ -100,13 +100,13 @@ let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.l
 
 " Language Client Language Specific Settings
 let g:LanguageClient_serverCommands = {
-    \ 'go':             ['~/go/bin/gopls'],
-    \ 'javascript':     ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'typescript':     ['javascript-typescript-stdio'],
-    \ 'sh':             ['~/.nodenv/versions/10.8.0/bin/bash-language-server', 'start'],
-    \ 'rust':           ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust':           ['~/.cargo/bin/rustup', 'run', 'stable', 'rust-analyzer'],
     \ }
+    "\ 'go':             ['~/go/bin/gopls'],
+    "\ 'javascript':     ['javascript-typescript-stdio'],
+    "\ 'javascript.jsx': ['javascript-typescript-stdio'],
+    "\ 'typescript':     ['javascript-typescript-stdio'],
+    "\ 'sh':             ['~/.nodenv/versions/10.8.0/bin/bash-language-server', 'start'],
     "\ 'ruby':           ['/usr/local/bin/solargraph', 'stdio'],
 
 " Language Client Autocomplete

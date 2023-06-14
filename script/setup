@@ -59,6 +59,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   npm install -g bash-language-server
   go install golang.org/x/tools/gopls@latest
   cd ~/.vim/pack/hfaulds/start/LanguageClient-neovim.git && ./install.sh
+  ~/.cargo/bin/rustup component add rls
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then

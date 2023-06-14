@@ -34,3 +34,6 @@
 [submodule "config/.vim/pack/hfaulds/start/vim-oscyank"]
 	path = config/.vim/pack/hfaulds/start/vim-oscyank
 	url = https://github.com/ojroques/vim-oscyank.git
+[submodule "config/.vim/pack/hfaulds/start/copilot.vim"]
+	path = config/.vim/pack/hfaulds/start/copilot.vim
+	url = git@github.com:github/copilot.vim.git
