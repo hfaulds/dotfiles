@@ -10,9 +10,6 @@
 [submodule "config/.vim/pack/hfaulds/start/lightline.vim"]
 	path = config/.vim/pack/hfaulds/start/lightline.vim
 	url = git@github.com:itchyny/lightline.vim.git
-[submodule "config/.vim/pack/hfaulds/start/LanguageClient-neovim.git"]
-	path = config/.vim/pack/hfaulds/start/LanguageClient-neovim.git
-	url = git@github.com:autozimu/LanguageClient-neovim.git
 [submodule "config/.vim/pack/hfaulds/start/editorconfig-vim.git"]
 	path = config/.vim/pack/hfaulds/start/editorconfig-vim.git
 	url = https://github.com/editorconfig/editorconfig-vim.git
@@ -22,9 +19,6 @@
 [submodule "config/.vim/pack/hfaulds/start/supertab"]
 	path = config/.vim/pack/hfaulds/start/supertab
 	url = git@github.com:ervandew/supertab.git
-[submodule "config/.vim/pack/hfaulds/start/ron.vim"]
-	path = config/.vim/pack/hfaulds/start/ron.vim
-	url = git@github.com:ron-rs/ron.git
 [submodule "config/.vim/pack/hfaulds/start/fzf.vim"]
 	path = config/.vim/pack/hfaulds/start/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
@@ -37,3 +31,18 @@
 [submodule "config/.vim/pack/hfaulds/start/copilot.vim"]
 	path = config/.vim/pack/hfaulds/start/copilot.vim
 	url = git@github.com:github/copilot.vim.git
+[submodule "config/.vim/pack/hfaulds/start/telescope.vim"]
+	path = config/.vim/pack/hfaulds/start/telescope.vim
+	url = git@github.com:nvim-telescope/telescope.nvim.git
+[submodule "config/.vim/pack/hfaulds/start/cql-vim"]
+	path = config/.vim/pack/hfaulds/start/cql-vim
+	url = git@github.com:elubow/cql-vim.git
+[submodule "config/.vim/pack/hfaulds/start/nvim-cmp"]
+	path = config/.vim/pack/hfaulds/start/nvim-cmp
+	url = git@github.com:hrsh7th/nvim-cmp.git
+[submodule "config/.vim/pack/hfaulds/start/nvim-lspconfig"]
+	path = config/.vim/pack/hfaulds/start/nvim-lspconfig
+	url = git@github.com:neovim/nvim-lspconfig.git
+[submodule "config/.vim/pack/hfaulds/start/telescope.nvim"]
+	path = config/.vim/pack/hfaulds/start/telescope.nvim
+	url = git@github.com:nvim-telescope/telescope.nvim.git

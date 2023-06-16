@@ -71,7 +71,7 @@ set shell=/bin/zsh
 set noswapfile
 
 let g:fzf_preview_window = []
-execute("set rtp+=" . system("dirname $(dirname $(greadlink -f $(which fzf)))"))
+execute("set rtp+=" . system("dirname $(dirname $(readlink -f $(which fzf)))"))
 nnoremap <leader>f :GFiles<CR>
 
 let g:lightline = {
@@ -89,29 +89,6 @@ let g:lightline = {
       \ }
 
 set hidden
-
-silent execute "!bash -c 'cd ~/.vim/pack/hfaulds/start/LanguageClient-neovim.git && ./install.sh'"
-
-" Language Client Settings
-let g:LanguageClient_loggingLevel = 'INFO'
-let g:LanguageClient_virtualTextPrefix = ''
-let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
-let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
-
-" Language Client Language Specific Settings
-let g:LanguageClient_serverCommands = {
-    \ 'rust':           ['~/.cargo/bin/rustup', 'run', 'stable', 'rust-analyzer'],
-    \ }
-    "\ 'go':             ['~/go/bin/gopls'],
-    "\ 'javascript':     ['javascript-typescript-stdio'],
-    "\ 'javascript.jsx': ['javascript-typescript-stdio'],
-    "\ 'typescript':     ['javascript-typescript-stdio'],
-    "\ 'sh':             ['~/.nodenv/versions/10.8.0/bin/bash-language-server', 'start'],
-    "\ 'ruby':           ['/usr/local/bin/solargraph', 'stdio'],
-
-" Language Client Autocomplete
-set completefunc=LanguageClient#complete
-let g:SuperTabDefaultCompletionType = "<c-x><c-u>"
 
 " File functions
 function! RenameFile(name, bang)
@@ -143,14 +120,6 @@ function! Search()
   let l:term = expand("<cword>")
   exec ":Ack!" l:term
 endfunction
-
-" Language Client Commands
-command!                                Definition     call LanguageClient#textDocument_definition()
-command!                                TypeDefinition call LanguageClient#textDocument_typeDefinition()
-command! -nargs=1                       Rename         call LanguageClient#textDocument_rename({'newName': <f-args>})
-command!                                Format         call LanguageClient#textDocument_formatting()
-command!                                References     call LanguageClient#textDocument_references()
-command!                                Info           call LanguageClient#textDocument_hover()
 
 " File commands
 command! Mkdir call Mkdir()

@@ -1,3 +1,5 @@
 config/.config
 config/.tmux/plugins
 config/.vim/.netrwhist
+config/.vim/pack/private/
+config/bin

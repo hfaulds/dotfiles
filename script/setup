@@ -21,76 +21,8 @@ echo "$conf" | while read -d $'\0' f; do
   ln -Fs "$pwd/config/$ff" "$HOME"
 done
 
-if ! command -v brew &> /dev/null
-then
-  echo "install homebrew"
-  if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    export CI=true
-  fi
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-  echo "brew bundle"
-  # brew bundle -q --file Brewfile.linux
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  # eval "$(/usr/local/bin/brew shellenv)"
-  echo "macos defaults"
-  defaults write com.apple.Dock tilesize -int 1
-  defaults write com.apple.Dock autohide-delay -float 5
-  killall Dock
-
-  echo "brew bundle"
-  # brew bundle
-
-  echo "brew post-install steps"
   $(brew --prefix)/opt/fzf/install --all
-fi
 
 if [[ "$SHELL" == "/bin/zsh" ]]; then
   source ~/.zshrc
-fi
-
-echo "install language servers"
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  npm install -g javascript-typescript-langserver
-  npm install -g bash-language-server
-  go install golang.org/x/tools/gopls@latest
-  cd ~/.vim/pack/hfaulds/start/LanguageClient-neovim.git && ./install.sh
-  ~/.cargo/bin/rustup component add rls
-fi
-
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  echo "configure git on codespaces"
-  git config --global credential.helper cache
-  printf "protocol=https\\nhost=github.com\\nusername=%s\\npassword=%s\\n" "hfaulds" "$GITHUB_TOKEN" | git credential approve
-
-  echo "configuring shell on codespaces"
-  sudo chsh -s "$(which zsh)" "$(whoami)"
-fi
-
-if ! launchctl list com.1password.SSH_AUTH_SOCK &> /dev/null
-then
-echo "setting up SSH_AUTH_SOCK"
-cat << EOF > ~/Library/LaunchAgents/com.1password.SSH_AUTH_SOCK.plist
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-  <key>Label</key>
-  <string>com.1password.SSH_AUTH_SOCK</string>
-  <key>ProgramArguments</key>
-  <array>
-    <string>/bin/sh</string>
-    <string>-c</string>
-    <string>/bin/ln -sf $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock \$SSH_AUTH_SOCK</string>
-  </array>
-  <key>RunAtLoad</key>
-  <true/>
-</dict>
-</plist>
-EOF
-launchctl load -w ~/Library/LaunchAgents/com.1password.SSH_AUTH_SOCK.plist
 fi
