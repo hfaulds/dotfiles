@@ -39,9 +39,9 @@ touch ~/.github/tokens
 source ~/.github/tokens
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-[ -s "$(brew --prefix)/opt/spaceship/spaceship.zsh" ] &&. "$(brew --prefix)/opt/spaceship/spaceship.zsh"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
-[ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
+[ -f "$(brew --prefix)/opt/spaceship/spaceship.zsh" ] &&. "$(brew --prefix)/opt/spaceship/spaceship.zsh"
+[ -f "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
+[ -f "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export SPACESHIP_PROMPT_ORDER=(

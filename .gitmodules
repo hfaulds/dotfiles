@@ -46,3 +46,12 @@
 [submodule "config/.vim/pack/hfaulds/start/telescope.nvim"]
 	path = config/.vim/pack/hfaulds/start/telescope.nvim
 	url = git@github.com:nvim-telescope/telescope.nvim.git
+[submodule "config/.vim/pack/hfaulds/start/lualine.nvim.git"]
+	path = config/.vim/pack/hfaulds/start/lualine.nvim
+	url = git@github.com:nvim-lualine/lualine.nvim.git
+[submodule "config/.vim/pack/hfaulds/start/lsp-status.nvim"]
+	path = config/.vim/pack/hfaulds/start/lsp-status.nvim
+	url = git@github.com:nvim-lua/lsp-status.nvim.git
+[submodule "config/.vim/pack/hfaulds/start/lualine-lsp-progress"]
+	path = config/.vim/pack/hfaulds/start/lualine-lsp-progress
+	url = git@github.com:arkav/lualine-lsp-progress.git

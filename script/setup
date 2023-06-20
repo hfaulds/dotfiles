@@ -6,6 +6,8 @@ echo "git submodule update"
 git submodule init
 git submodule update
 
+touch ./config/.vim/pack/private/
+
 pwd=$(pwd)
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
