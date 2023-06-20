@@ -1,54 +1,54 @@
 [submodule "config/.vim/pack/hfaulds/start/ack.vim"]
-	path = config/.vim/pack/hfaulds/start/ack.vim
+	path = config/.vim/pack/public/start/ack.vim
 	url = git@github.com:mileszs/ack.vim.git
 [submodule "config/.vim/pack/hfaulds/start/comments.vim"]
-	path = config/.vim/pack/hfaulds/start/comments.vim
+	path = config/.vim/pack/public/start/comments.vim
 	url = git@github.com:sudar/comments.vim.git
 [submodule "config/.vim/pack/hfaulds/start/vim-gitgutter"]
-	path = config/.vim/pack/hfaulds/start/vim-gitgutter
+	path = config/.vim/pack/public/start/vim-gitgutter
 	url = git@github.com:airblade/vim-gitgutter.git
 [submodule "config/.vim/pack/hfaulds/start/editorconfig-vim.git"]
-	path = config/.vim/pack/hfaulds/start/editorconfig-vim.git
+	path = config/.vim/pack/public/start/editorconfig-vim.git
 	url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "config/.tmux/plugins/tpm"]
 	path = config/.tmux/plugins/tpm
 	url = git@github.com:tmux-plugins/tpm.git
 [submodule "config/.vim/pack/hfaulds/start/supertab"]
-	path = config/.vim/pack/hfaulds/start/supertab
+	path = config/.vim/pack/public/start/supertab
 	url = git@github.com:ervandew/supertab.git
 [submodule "config/.vim/pack/hfaulds/start/fzf.vim"]
-	path = config/.vim/pack/hfaulds/start/fzf.vim
+	path = config/.vim/pack/public/start/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
 [submodule "config/.vim/pack/hfaulds/start/typescript-vim"]
-	path = config/.vim/pack/hfaulds/start/typescript-vim
+	path = config/.vim/pack/public/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "config/.vim/pack/hfaulds/start/vim-oscyank"]
-	path = config/.vim/pack/hfaulds/start/vim-oscyank
+	path = config/.vim/pack/public/start/vim-oscyank
 	url = https://github.com/ojroques/vim-oscyank.git
 [submodule "config/.vim/pack/hfaulds/start/copilot.vim"]
-	path = config/.vim/pack/hfaulds/start/copilot.vim
+	path = config/.vim/pack/public/start/copilot.vim
 	url = git@github.com:github/copilot.vim.git
 [submodule "config/.vim/pack/hfaulds/start/telescope.vim"]
 	path = config/.vim/pack/hfaulds/start/telescope.vim
 	url = git@github.com:nvim-telescope/telescope.nvim.git
 [submodule "config/.vim/pack/hfaulds/start/cql-vim"]
-	path = config/.vim/pack/hfaulds/start/cql-vim
+	path = config/.vim/pack/public/start/cql-vim
 	url = git@github.com:elubow/cql-vim.git
 [submodule "config/.vim/pack/hfaulds/start/nvim-cmp"]
-	path = config/.vim/pack/hfaulds/start/nvim-cmp
+	path = config/.vim/pack/public/start/nvim-cmp
 	url = git@github.com:hrsh7th/nvim-cmp.git
 [submodule "config/.vim/pack/hfaulds/start/nvim-lspconfig"]
-	path = config/.vim/pack/hfaulds/start/nvim-lspconfig
+	path = config/.vim/pack/public/start/nvim-lspconfig
 	url = git@github.com:neovim/nvim-lspconfig.git
 [submodule "config/.vim/pack/hfaulds/start/telescope.nvim"]
-	path = config/.vim/pack/hfaulds/start/telescope.nvim
+	path = config/.vim/pack/public/start/telescope.nvim
 	url = git@github.com:nvim-telescope/telescope.nvim.git
 [submodule "config/.vim/pack/hfaulds/start/lualine.nvim.git"]
-	path = config/.vim/pack/hfaulds/start/lualine.nvim
+	path = config/.vim/pack/public/start/lualine.nvim
 	url = git@github.com:nvim-lualine/lualine.nvim.git
 [submodule "config/.vim/pack/hfaulds/start/lsp-status.nvim"]
-	path = config/.vim/pack/hfaulds/start/lsp-status.nvim
+	path = config/.vim/pack/public/start/lsp-status.nvim
 	url = git@github.com:nvim-lua/lsp-status.nvim.git
 [submodule "config/.vim/pack/hfaulds/start/lualine-lsp-progress"]
-	path = config/.vim/pack/hfaulds/start/lualine-lsp-progress
+	path = config/.vim/pack/public/start/lualine-lsp-progress
 	url = git@github.com:arkav/lualine-lsp-progress.git

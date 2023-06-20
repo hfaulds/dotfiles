@@ -73,20 +73,6 @@ set noswapfile
 let g:fzf_preview_window = []
 execute("set rtp+=" . system("dirname $(dirname $(readlink -f $(which fzf)))"))
 
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'relativepath', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ], [ 'fileformat' ] ]
-      \ },
-      \ 'inactive': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'relativepath', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ], [ 'fileformat' ] ]
-      \ },
-      \ }
-
 set hidden
 
 " File functions
