@@ -1,5 +1,31 @@
+-- Current directory Ack
 vim.api.nvim_set_keymap('n', '<leader>f', ':Files<CR>', {})
+-- Git repo global Ack
 vim.api.nvim_set_keymap('n', '<leader>g', ':GFiles<CR>', {})
+-- ,c to show hidden characters
+vim.api.nvim_set_option_value('listchars', 'tab:>-,trail:·,eol:$', {})
+vim.api.nvim_set_keymap('n', '<leader>c', ':set nolist!<CR>', {})
+-- make Y behave like C and D
+vim.api.nvim_set_keymap('n', 'Y', 'y$', {})
+
+vim.api.nvim_create_user_command('Mkdir', function()
+  local dir = vim.fn.expand('%:h')
+  vim.fn.mkdir(dir, 'p')
+end, {})
+
+vim.api.nvim_create_user_command('RenameFile', function(opts)
+  local curpath = vim.fn.expand('%:p')
+  local curdir = vim.fn.expand('%:p:h')
+  local newpath = curdir .. '/' .. opts.args
+  vim.fn.rename(curpath, newpath)
+  vim.cmd.edit(newpath)
+end, { nargs = 1})
+
+
+vim.api.nvim_create_user_command('Search', function(opts)
+  local term = vim.fn.expand("<cword>")
+  vim.cmd("Ack!", term)
+end, {})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
