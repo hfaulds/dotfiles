@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 require('lualine').setup({
   sections = {
-    lualine_c = {
+    lualine_x = {
       'lsp_progress'
     }
   }

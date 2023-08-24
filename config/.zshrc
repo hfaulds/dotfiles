@@ -31,8 +31,10 @@ alias vim=nvim
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="`go env GOPATH`/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home -v 19)
 set clipboard=unnamed
 
+hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc": 0x700000064,"HIDKeyboardModifierMappingDst": 0x700000035 }]}' >/dev/null
 
 mkdir -p ~/.github
 touch ~/.github/tokens
