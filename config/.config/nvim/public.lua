@@ -1,3 +1,5 @@
+require'lspconfig'.graphql.setup{}
+
 -- Current directory Ack
 vim.api.nvim_set_keymap('n', '<leader>f', ':Files<CR>', {})
 -- Git repo global Ack
