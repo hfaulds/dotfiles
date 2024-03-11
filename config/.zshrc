@@ -1,4 +1,3 @@
-[ -f $HOME/.zsh_private ] && source $HOME/.zsh_private
 autoload -U compinit
 compinit
 
@@ -46,6 +45,30 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 [ -f "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+autoload -U add-zsh-hook
+
+load-nvmrc() {
+  local nvmrc_path
+  nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version
+    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
 export SPACESHIP_PROMPT_ORDER=(
   dir            # Current directory section
   git            # Git section (git_branch + git_status)
@@ -57,3 +80,4 @@ export SPACESHIP_PROMPT_ORDER=(
   sudo           # Sudo indicator
   char           # Prompt character
 )
+[ -f $HOME/.zsh_private ] && source $HOME/.zsh_private
