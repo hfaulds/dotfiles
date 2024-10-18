@@ -58,3 +58,6 @@
 [submodule "config/.vim/pack/public/start/kotlin-vim"]
 	path = config/.vim/pack/public/start/kotlin-vim
 	url = https://github.com/udalov/kotlin-vim.git
+[submodule "config/.vim/pack/public/start/vim-godebug"]
+	path = config/.vim/pack/public/start/vim-godebug
+	url = https://github.com/jodosha/vim-godebug.git

@@ -16,7 +16,7 @@ export histsize=100000
 export histfile="$home/.history"
 export savehist=$histsize
 
-export EDITOR=vi
+export EDITOR=nvim
 
 # By default, zsh considers many characters part of a word (e.g., _ and -).
 # Narrow that down to allow easier skipping through words via M-f and M-b.
@@ -39,13 +39,14 @@ mkdir -p ~/.github
 touch ~/.github/tokens
 source ~/.github/tokens
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-[ -f "$(brew --prefix)/opt/spaceship/spaceship.zsh" ] &&. "$(brew --prefix)/opt/spaceship/spaceship.zsh"
+eval "$(/$(brew --prefix)/bin/brew shellenv)"
 [ -f "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
 [ -f "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+[ -f "$(brew --prefix)/etc/grc.zsh" ] && . "$(brew --prefix)/etc/grc.zsh"
+[ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 autoload -U add-zsh-hook
+[ -f "$(brew --prefix)/opt/spaceship/spaceship.zsh" ] && . "$(brew --prefix)/opt/spaceship/spaceship.zsh"
+
 
 load-nvmrc() {
   local nvmrc_path
