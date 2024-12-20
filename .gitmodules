@@ -53,7 +53,7 @@
 	path = config/.vim/pack/public/start/lualine-lsp-progress
 	url = git@github.com:arkav/lualine-lsp-progress.git
 [submodule "config/.vim/pack/public/nvim-tree/nvim-web-devicons"]
-	path = config/.vim/pack/public/nvim-tree/nvim-web-devicons
+	path = config/.vim/pack/public/start/nvim-tree/nvim-web-devicons
 	url = git@github.com:nvim-lualine/lualine.nvim.git
 [submodule "config/.vim/pack/public/start/kotlin-vim"]
 	path = config/.vim/pack/public/start/kotlin-vim

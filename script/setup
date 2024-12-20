@@ -23,7 +23,7 @@ echo "$conf" | while read -d $'\0' f; do
   ln -Fs "$pwd/config/$ff" "$HOME"
 done
 
-  $(brew --prefix)/opt/fzf/install --all
+$(brew --prefix)/opt/fzf/install --all
 
 if [[ "$SHELL" == "/bin/zsh" ]]; then
   source ~/.zshrc

@@ -33,3 +33,8 @@
   defaultBranch = main
 [status]
   aheadBehind = true
+[maintenance]
+	repo = /Users/haydenfaulds/src/github.com/monzo/web-projects
+	repo = /Users/haydenfaulds/src/github.com/monzo/wearedev
+[url "ssh://git@github.com/monzo/"]
+	insteadOf = https://github.com/monzo/
