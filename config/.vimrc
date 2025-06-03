@@ -9,6 +9,11 @@ set scrolloff=3           " More context around cursor
 set shiftwidth=2          " Number of spaces to autoformat tabs to
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
 
+let g:dracula_colorterm = 0
+
+syntax enable
+colorscheme dracula
+
 " Search options
 set ignorecase
 set smartcase

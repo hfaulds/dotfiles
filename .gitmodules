@@ -13,9 +13,6 @@
 [submodule "config/.tmux/plugins/tpm"]
 	path = config/.tmux/plugins/tpm
 	url = git@github.com:tmux-plugins/tpm.git
-[submodule "config/.vim/pack/hfaulds/start/supertab"]
-	path = config/.vim/pack/public/start/supertab
-	url = git@github.com:ervandew/supertab.git
 [submodule "config/.vim/pack/hfaulds/start/fzf.vim"]
 	path = config/.vim/pack/public/start/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
@@ -61,3 +58,9 @@
 [submodule "config/.vim/pack/public/start/vim-godebug"]
 	path = config/.vim/pack/public/start/vim-godebug
 	url = https://github.com/jodosha/vim-godebug.git
+[submodule "config/.vim/pack/public/start/supertab"]
+	path = config/.vim/pack/public/start/supertab
+	url = https://github.com/ervandew/supertab
+[submodule "config/.vim/pack/public/start/dracula"]
+	path = config/.vim/pack/public/start/dracula
+	url = https://github.com/dracula/vim.git
