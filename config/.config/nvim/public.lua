@@ -2,6 +2,7 @@ require'lspconfig'.graphql.setup{}
 require'lspconfig'.protols.setup{}
 require'lspconfig'.ts_ls.setup{}
 require'lspconfig'.sourcekit.setup{}
+require'lspconfig'.lua_ls.setup{}
 
 -- Current directory Ack
 vim.api.nvim_set_keymap('n', '<leader>f', ':Files<CR>', {})
