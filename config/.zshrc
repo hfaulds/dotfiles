@@ -6,15 +6,15 @@ compinit
 unsetopt flowcontrol
 
 # unbreak broken, non-colored terminal
-alias ls='ls -g'
-alias ll='ls -lg'
-export lscolors="exgxbxdxcxegedxbxgxcxd"
-export grep_options="--color"
+alias ls='ls -G'
+alias ll='ls -lG'
+export LSCOLORS="exgxbxdxcxegedxbxgxcxd"
+alias grep='grep --color=auto'
 
 # unbreak history
-export histsize=100000
-export histfile="$home/.history"
-export savehist=$histsize
+export HISTSIZE=100000
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
 
 export EDITOR=nvim
 
@@ -29,16 +29,14 @@ alias vim=nvim
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="`go env GOPATH`/bin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home -v 19)
-set clipboard=unnamed
+command -v go >/dev/null && export PATH="$(go env GOPATH)/bin:$PATH"
+/usr/libexec/java_home -v 19 >/dev/null 2>&1 && export JAVA_HOME=$(/usr/libexec/java_home -v 19)
 
 mkdir -p ~/.github
 touch ~/.github/tokens
 source ~/.github/tokens
 
 eval "$(rbenv init -)"
-eval "$(/$(brew --prefix)/bin/brew shellenv)"
 [ -f "$(brew --prefix)/opt/nvm/nvm.sh" ] && . "$(brew --prefix)/opt/nvm/nvm.sh"
 [ -f "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && . "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 [ -f "$(brew --prefix)/etc/grc.zsh" ] && . "$(brew --prefix)/etc/grc.zsh"
@@ -85,25 +83,23 @@ load-nvmrc
 [ -f $HOME/.zsh_private ] && source $HOME/.zsh_private
 
 # Activate Mise
-eval "$(mise activate zsh)"
+command -v mise >/dev/null && eval "$(mise activate zsh)"
 export PYENV_ROOT=$(brew --prefix)/var/pyenv
 export PATH=$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 if command -v pyenv 1>/dev/null 2>&1; then eval "$(pyenv init -)"; fi
-export PATH=/Users/haydenfaulds/.local/bin:$PATH
-source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+gcloud_sdk=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
+[ -f $gcloud_sdk/path.zsh.inc ] && source $gcloud_sdk/path.zsh.inc
+[ -f $gcloud_sdk/completion.zsh.inc ] && source $gcloud_sdk/completion.zsh.inc
 export CLOUDSDK_PYTHON=/opt/homebrew/var/pyenv/versions/3.11.11/bin/python
 export OAUTHLIB_RELAX_TOKEN_SCOPE=1
-source /Users/haydenfaulds/src/github.com/monzo/analytics/dbt/misc/shell/source.sh
-export PATH=/Users/haydenfaulds/.local/bin:$PATH
-export PATH=/Users/haydenfaulds/.local/bin:$PATH
-export PATH=/Users/haydenfaulds/.local/bin:$PATH
-export PATH=/Users/haydenfaulds/.local/bin:$PATH
+monzo_dbt=$HOME/src/github.com/monzo/analytics/dbt/misc/shell/source.sh
+[ -f $monzo_dbt ] && source $monzo_dbt
+export PATH=$HOME/.local/bin:$PATH
 
 export CLAUDE_CODE_DISABLE_MOUSE=1
 # export CLAUDE_CODE_NO_FLICKER=1
 
-if [ "$PWD" = "$HOME" ]; then
+if [ "$PWD" = "$HOME" ] && [ -d ~/src/github.com/monzo/wearedev ]; then
   cd ~/src/github.com/monzo/wearedev/
 fi
 

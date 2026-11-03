@@ -2,29 +2,51 @@
 
 set -e
 
+cd "${0:A:h}/.."
+pwd=$(pwd)
+
 echo "git submodule update"
 git submodule init
 git submodule update
 
-touch ./config/.vim/pack/private/
+mkdir -p ./config/.vim/pack/private/
 
-pwd=$(pwd)
+link() {
+  local src=$1 dst=$2
+  echo "link $src -> $dst"
+  rm -rf "$dst"
+  ln -sfn "$src" "$dst"
+}
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  conf=$(find config -maxdepth 1 -print0)
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  conf=$(find config -d 1 -print0)
-fi
-
-echo "$conf" | while read -d $'\0' f; do
-  ff=$(basename $f)
-  echo "link $pwd/config/$ff -> $HOME/$ff"
-  rm -rf $HOME/$ff
-  ln -Fs "$pwd/config/$ff" "$HOME"
+# Top-level dotfiles: ~/.zshrc, ~/.vim, ...
+for f in config/*(D); do
+  ff=${f:t}
+  case $ff in
+    .DS_Store|.config) continue ;;
+  esac
+  link "$pwd/config/$ff" "$HOME/$ff"
 done
 
-$(brew --prefix)/opt/fzf/install --all
+# ~/.config: link each child individually rather than replacing the whole
+# directory, so other apps' config (gh, ghostty, ...) isn't wiped.
+[[ -L $HOME/.config ]] && rm "$HOME/.config"
+mkdir -p "$HOME/.config"
+for f in config/.config/*(D); do
+  ff=${f:t}
+  [[ $ff == .DS_Store ]] && continue
+  link "$pwd/config/.config/$ff" "$HOME/.config/$ff"
+done
 
-if [[ "$SHELL" == "/bin/zsh" ]]; then
-  source ~/.zshrc
+echo "brew bundle"
+brew bundle --file="$pwd/Brewfile"
+
+# .zshrc already sources ~/.fzf.zsh; don't let the installer append to it
+"$(brew --prefix)/opt/fzf/install" --key-bindings --completion --no-update-rc
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  echo "dock autohide"
+  defaults write com.apple.dock autohide -bool true
+  killall Dock
 fi
+
+echo "done - open a new shell (or run: exec zsh)"
